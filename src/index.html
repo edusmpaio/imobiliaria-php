@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imobiliária</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body class="bg-zinc-100">
+    <header
+      class="max-w-[1180px] mx-auto px-4 pt-6 flex items-center justify-between"
+    >
+      <img src="./assets/logo.svg" alt="Brand Logo" class="w-24" />
+
+      <ul class="flex gap-6 items-center font-medium text-lg text-zinc-600">
+        <li>
+          <a href="#" class="hover:text-zinc-800">Início</a>
+        </li>
+        <li>
+          <a href="./php/immobiles.php" class="hover:text-zinc-800">Imóveis</a>
+        </li>
+        <li>
+          <a href="#" class="hover:text-zinc-800">Contato</a>
+        </li>
+      </ul>
+    </header>
+
+    <main class="max-w-[1180px] mx-auto px-4 mb-24">
+      <section class="mt-24 grid grid-cols-2">
+        <div>
+          <h1 class="text-6xl font-bold text-zinc-800">
+            Encontre o imóvel ideal para você
+          </h1>
+          <p class="max-w-lg font-lg leading-relaxed text-zinc-500 mt-8">
+            Explore nossas opções de imóveis e encontre a casa dos seus sonhos
+            com a ajuda da nossa equipe especializada.
+          </p>
+
+          <form
+            class="bg-white absolute mt-6 z-10 flex items-center gap-6 p-6 shadow"
+          >
+            <select
+              class="bg-zinc-100 border border-zinc-200 py-2 px-4"
+              name=""
+              id=""
+            >
+              <option value="">Compra</option>
+              <option value="">Aluguel</option>
+            </select>
+            <select
+              class="bg-zinc-100 border border-zinc-200 py-2 px-4 text-zinc-800"
+              name=""
+              id=""
+            >
+              <option value="" selected hidden>Categoria</option>
+              <option value="">Casa</option>
+              <option value="">Apartamento</option>
+            </select>
+            <select
+              class="bg-zinc-100 border border-zinc-200 py-2 px-4 text-zinc-800"
+              name=""
+              id=""
+            >
+              <option value="" selected hidden>Valor máximo</option>
+              <option value="">R$ 300.000,00</option>
+              <option value="">R$ 600.000,00</option>
+              <option value="">R$ 900.000,00</option>
+            </select>
+
+            <button
+              type="submit"
+              class="bg-zinc-800 text-zinc-100 py-2 px-4 font-medium hover:bg-zinc-900"
+            >
+              Procurar imóveis
+            </button>
+          </form>
+        </div>
+        <img
+          src="./assets/hero-photo.jpg"
+          alt="Casa"
+          class="rounded-tl-[32px]"
+        />
+      </section>
+
+      <section class="mt-24">
+        <h2 class="text-4xl font-bold mb-6 text-zinc-800">
+          Nossos principais imóveis
+        </h2>
+        <div class="flex items-center justify-between mb-6">
+          <p class="max-w-md text-zinc-500 leading-relaxed">
+            Conheça nossas opções mais populares e encontre o lar perfeito para
+            você.
+          </p>
+
+          <a
+            href="#"
+            class="flex items-center gap-1 text-zinc-600 hover:text-zinc-800"
+          >
+            Ver mais
+            <i class="ph ph-arrow-right text-lg"></i>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-8">
+          <a class="flex-1 shadow" href="#">
+            <div
+              class="h-[284px] w-full bg-[url(./assets/immobile-1.jpg)] bg-no-repeat bg-cover bg-center"
+            ></div>
+
+            <div class="bg-white py-8 px-6">
+              <strong class="text-zinc-800 font-bold text-2xl block mb-6"
+                >Imóvel 1</strong
+              >
+              <div class="flex items-center justify-between">
+                <strong class="text-lg text-zinc-700">R$ 300.000,00</strong>
+                <button
+                  class="bg-zinc-800 text-zinc-100 py-2 px-4 font-medium hover:bg-zinc-900"
+                >
+                  Saiba mais
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a class="flex-1 shadow" href="#">
+            <div
+              class="h-[284px] w-full bg-[url(./assets/immobile-2.jpg)] bg-no-repeat bg-cover bg-center"
+            ></div>
+
+            <div class="bg-white py-8 px-6">
+              <strong class="text-zinc-800 font-bold text-2xl block mb-6"
+                >Imóvel 2</strong
+              >
+              <div class="flex items-center justify-between">
+                <strong class="text-lg text-zinc-700">R$ 600.000,00</strong>
+                <button
+                  class="bg-zinc-800 text-zinc-100 py-2 px-4 font-medium hover:bg-zinc-900"
+                >
+                  Saiba mais
+                </button>
+              </div>
+            </div>
+          </a>
+
+          <a class="flex-1 shadow" href="#">
+            <div
+              class="h-[284px] w-full bg-[url(./assets/immobile-3.jpg)] bg-no-repeat bg-cover bg-center"
+            ></div>
+
+            <div class="bg-white py-8 px-6">
+              <strong class="text-zinc-800 font-bold text-2xl block mb-6"
+                >Imóvel 3</strong
+              >
+              <div class="flex items-center justify-between">
+                <strong class="text-lg text-zinc-700">R$ 900.000,00</strong>
+                <button
+                  class="bg-zinc-800 text-zinc-100 py-2 px-4 font-medium hover:bg-zinc-900"
+                >
+                  Saiba mais
+                </button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="mt-24 flex flex-col items-center">
+        <h2 class="text-center text-4xl max-w-lg font-bold mb-6 text-zinc-800">
+          Ou procure pelo seu imóvel dos sonhos
+        </h2>
+        <p class="text-center max-w-md font-lg leading-relaxed text-zinc-500">
+          Navegue pela nossa lista de imóveis disponíveis e encontre o lar que
+          combina com você, seja para compra ou aluguel.
+        </p>
+        <a
+          href="./php/immobiles.php"
+          class="bg-zinc-800 text-zinc-100 py-3 px-6 font-medium hover:bg-zinc-900 mt-8"
+        >
+          Explorar imóveis
+        </a>
+      </section>
+    </main>
+
+    <footer
+      class="max-w-[1180px] mx-auto px-4 py-11 flex items-center justify-between border-t border-gray-300"
+    >
+      <img src="./assets/logo.svg" alt="Brand Logo" class="w-24" />
+
+      <p>© 2023 Brand. Todos os direitos reservados</p>
+    </footer>
+  </body>
+</html>
