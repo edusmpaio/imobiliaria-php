@@ -1,3 +1,16 @@
+<?php
+ include 'conn.php';
+
+ session_start();
+
+ if (
+   !isset($_SESSION['email']) == true and
+   !isset($_SESSION['senha']) == true
+ ) {
+   header('location:form-login.php');
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -8,7 +21,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
-  <body class="h-screen">
+  <body class="h-screen bg-zinc-100">
     <header
       class="max-w-[1180px] mx-auto px-4 pt-6 flex items-center justify-between"
     >
@@ -43,33 +56,12 @@
         <?php
         include 'conn.php';
 
-        if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
-          $target_dir = '../assets/uploads/';
+        $sql = "DELETE FROM imovel WHERE id = ".$_GET['id'];
 
-          $target_file =
-            $target_dir .
-            date('YmdHis') .
-            '.' .
-            pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-
-          if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
-            $sql =
-              "INSERT INTO images (nome, caminho) VALUES ('" .
-              $_FILES['image']['name'] .
-              "', '" .
-              $target_file .
-              "')";
-
-            if (mysqli_query($conn, $sql)) {
-              echo "<strong class='text-zinc-800 text-4xl max-w-lg text-center'>A imagem foi enviada e armazenada com sucesso.</strong>";
-            } else {
-              echo "<strong class='text-zinc-800 text-4xl max-w-lg text-center'>Erro ao armazenar a imagem</strong>";
-            }
-          } else {
-            echo "<strong class='text-zinc-800 text-4xl max-w-lg text-center'>Erro ao fazer upload da imagem</strong>";
-          }
+        if (mysqli_query($conn, $sql)) {
+          echo "<strong class='text-zinc-800 text-4xl max-w-lg text-center'>O imóvel foi excluido com sucesso.</strong>";
         } else {
-          echo "<strong class='text-zinc-800 text-4xl max-w-lg text-center'>Erro ao enviar a imagem</strong>";
+          echo "<strong class='text-zinc-800 text-4xl max-w-lg text-center'>Erro ao excluir o imóvel</strong>";
         }
 
         mysqli_close($conn);
@@ -78,7 +70,7 @@
           href="admin.php"
           class="bg-zinc-800 text-zinc-100 py-3 px-6 font-medium hover:bg-zinc-900"
         >
-          Cadastrar novamente
+          Voltar ao início
         </a>
       </section>
     </main>

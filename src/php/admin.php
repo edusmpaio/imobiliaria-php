@@ -1,4 +1,4 @@
- <?php
+<?php
  include 'conn.php';
 
  session_start();
@@ -21,7 +21,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
-  <body>
+  <body class="bg-zinc-100">
     <header
       class="max-w-[1180px] mx-auto px-4 pt-6 flex items-center justify-between"
     >
@@ -53,26 +53,14 @@
 
     <main class="max-w-[1180px] mx-auto px-4 my-16">
       <section class="flex flex-col items-center justify-center">
-        <h1 class="text-4xl text-zinc-800 font-bold">Cadastrar imóveis</h1>
-        <p
-          class="text-center max-w-sm font-lg leading-relaxed text-zinc-500 mt-4 mb-11"
-        >
-          Escolha um arquivo de imagem de um imóvel para cadastrar!
-        </p>
+        <h1 class="text-4xl text-zinc-800 font-bold mb-8">Qual operação deseja realizar?</h1>
+        <div class="max-w-sm w-full flex flex-col items-center gap-6">
+          <a href="./admin-cadastro.php" class="bg-zinc-800 text-zinc-100 py-3 px-6 font-medium hover:bg-zinc-900 w-full cursor-pointer flex justify-center">Cadastrar</a>
+          
+          <a href="./admin-alterar.php" class="bg-zinc-800 text-zinc-100 py-3 px-6 font-medium hover:bg-zinc-900 w-full cursor-pointer flex justify-center">Alterar</a>
 
-        <form
-          action="upload.php"
-          method="post"
-          enctype="multipart/form-data"
-          class="flex flex-col items-center justify-center max-w-[400px] w-full"
-        >
-          <input type="file" name="image" />
-          <input
-            type="submit"
-            value="Enviar"
-            class="bg-zinc-800 text-zinc-100 py-3 px-6 font-medium hover:bg-zinc-900 w-full cursor-pointer mt-8"
-          />
-        </form>
+          <a href="./admin-excluir.php" class="bg-zinc-800 text-zinc-100 py-3 px-6 font-medium hover:bg-zinc-900 w-full cursor-pointer flex justify-center">Excluir</a>
+        </div>
       </section>
     </main>
   </body>
