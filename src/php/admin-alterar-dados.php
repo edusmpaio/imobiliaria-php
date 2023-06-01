@@ -130,7 +130,7 @@
           <div class="w-full mb-4">
             <label for="preco" class="text-start mb-1 block">Preço</label>
 
-            <input required type="number" name="preco" id="preco" min="0" max="900000.00" step="0" placeholder="300000.00" class="appearance-none w-full py-3 px-4 bg-white border border-zinc-300" />
+            <input required type="number" name="preco" id="preco" min="1" max="900000.00" step="0" placeholder="300000.00" class="appearance-none w-full py-3 px-4 bg-white border border-zinc-300" />
           </div>
 
           <input type="file" name="image" />

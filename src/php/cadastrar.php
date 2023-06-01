@@ -72,7 +72,7 @@
             $preco = $_POST['preco'];
             $image_name = $_FILES['image']['name'];
             $caminho = $target_file;
-
+            
             $sql =
               "INSERT INTO imovel (nome, tipo, categoria, preco, image_name, caminho) VALUES ('$nome', '$tipo', '$categoria', $preco, '$image_name', '$caminho')";
 

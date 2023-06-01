@@ -39,33 +39,34 @@
           para buscar exatamente o que você deseja.
         </p>
 
-        <form class="bg-white mt-6 flex items-center gap-6 p-6 shadow">
+        <form class="bg-white mt-6 flex items-center gap-6 p-6 shadow" method="GET">
           <select
             class="bg-zinc-100 border border-zinc-200 py-2 px-4 text-zinc-800"
-            name=""
-            id=""
+            name="tipo"
+            id="tipo"
           >
-            <option value="">Aluguel</option>
-            <option value="">Compra</option>
+            <option value="" selected disabled>Tipo</option>
+            <option value="Aluguel">Aluguel</option>
+            <option value="Compra">Compra</option>
           </select>
           <select
             class="bg-zinc-100 border border-zinc-200 py-2 px-4 text-zinc-800"
-            name=""
-            id=""
+            name="categoria"
+            id="categoria"
           >
-              <option value="" selected hidden>Categoria</option>
-              <option value="">Casa</option>
-              <option value="">Apartamento</option>
+              <option value="" selected disabled>Categoria</option>
+              <option value="Casa">Casa</option>
+              <option value="Apartamento">Apartamento</option>
           </select>
           <select
             class="bg-zinc-100 border border-zinc-200 py-2 px-4 text-zinc-800"
-            name=""
-            id=""
+            name="valor_maximo"
+            id="valor_maximo"
           >
-            <option value="" selected hidden>Valor máximo</option>
-            <option value="">R$ 300.000,00</option>
-            <option value="">R$ 600.000,00</option>
-            <option value="">R$ 900.000,00</option>
+            <option value="" selected disabled>Valor máximo</option>
+            <option value="300000.00">R$ 300.000,00</option>
+            <option value="600000.00">R$ 600.000,00</option>
+            <option value="900000.00">R$ 900.000,00</option>
           </select>
 
           <button
@@ -79,7 +80,28 @@
         <?php
         include 'conn.php';
 
-        $sql = 'SELECT * FROM imovel';
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+          $tipo = isset($_GET['tipo']) ? $_GET['tipo'] : '';
+          $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+          $valorMaximo = isset($_GET['valor_maximo']) ? $_GET['valor_maximo'] : '';
+
+          $sql = 'SELECT * FROM imovel WHERE 1=1';
+
+          if (!empty($tipo)) {
+            $sql .= " AND tipo = '$tipo'";
+          }
+
+          if (!empty($categoria)) {
+            $sql .= " AND categoria = '$categoria'";
+          }
+
+          if (!empty($valorMaximo)) {
+            $sql .= " AND preco <= '$valorMaximo'";
+          }
+        } else {
+          $sql = 'SELECT * FROM imovel';
+        }
+
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -104,7 +126,7 @@
             echo"</div>";
             echo "<div class='flex items-center justify-between'>";
             echo "<strong class='text-lg text-zinc-700'>R$ ".
-            $row['preco'] ."</strong>";
+            number_format($row['preco'], 2, ',', '.') ."</strong>";
             echo "<button class='bg-zinc-800 text-zinc-100 py-2 px-4 font-medium hover:bg-zinc-900'>Saiba mais</button>";
             echo '</div>';
             echo '</div>';
@@ -112,7 +134,7 @@
           }
           echo '</section>';
         } else {
-          echo "<p class='text-center max-w-md mx-auto font-lg leading-relaxed text-zinc-500 font-medium'>Ops! Ainda não há nenhum imóvel cadastrado!</p>";
+          echo "<p class='text-center max-w-md mx-auto font-lg leading-relaxed text-zinc-500 font-medium'>Ops! Ainda não há imóveis cadastrados!</p>";
         }
         mysqli_close($conn);
         ?>

@@ -89,7 +89,7 @@
             echo"</div>";
             echo "<div class='flex items-center justify-between'>";
             echo "<strong class='text-lg text-zinc-700'>R$ ".
-            $row['preco'] ."</strong>";
+            number_format($row['preco'], 2, ',', '.') ."</strong>";
         
             echo '</div>';
             echo '</div>';
